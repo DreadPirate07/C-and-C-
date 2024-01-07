@@ -1,10 +1,12 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include <vector>
 using namespace std;
 
 int main(){
     vector<int> a;
-    a.push_back(9);
-    cout << a[0] << endl;
+    a.resize(2);
+    a[3] = 10;
+    cout << a.size() << endl;
     return 0;
 
 }
