@@ -10,4 +10,5 @@ int main(){
     printf("%d %d \n",*ptr,*(ptr+1));
     printf("%d \n",((char*)5));
     printf("%d",sizeof((char*)5));
+    return 0;
 }
