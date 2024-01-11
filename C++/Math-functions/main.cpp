@@ -1,9 +1,6 @@
 #include <iostream>
 #include "arr.h"
 
-void printarr(struct arr &a);
-double arrayAverage(struct arr &a);
-
 int main(int argc, char **argv)
 {
     int i = 0;
