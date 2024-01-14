@@ -19,5 +19,6 @@ int main(int argc, char **argv)
     // std::cout << *age_ptr << std::endl;
     int &age_ref = age;
     std::cout << age_ref << std::endl;
+    free(age_ptr);
     return 0;
 }
