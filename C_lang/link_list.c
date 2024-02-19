@@ -47,6 +47,7 @@ void printArray(node_t **head)
     }
 }
 
+
 int main()
 {
     initializeLinkedList(&head, 0);

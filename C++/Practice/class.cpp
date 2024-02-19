@@ -30,5 +30,7 @@ int main()
     Object obj2(50, 100);
     obj1.printAttributes();
     obj2.printAttributes();
+    uint16_t t  = 65536;
+    std::cout << t << std::endl;
     return 0;
 }
