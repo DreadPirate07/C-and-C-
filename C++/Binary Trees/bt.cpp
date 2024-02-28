@@ -1,7 +1,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <vector>
-
+#include <algorithm>
 class binaryTree
 {
 public:
@@ -64,26 +64,77 @@ std::vector<std::vector<int>> levelOrder(binaryTree *node)
 
     std::queue<binaryTree *> q;
     q.push(node);
-    
 
-    while (!q.empty()){
+    while (!q.empty())
+    {
         std::vector<int> level;
         int levelsize = q.size();
-        
-        for (int i = 0 ; i < levelsize ; i++){
+
+        for (int i = 0; i < levelsize; i++)
+        {
             binaryTree *local = q.front();
             q.pop();
             level.push_back(local->data);
 
-            if (local->left != NULL){
+            if (local->left != NULL)
+            {
                 q.push(local->left);
             }
-            if (local->right != NULL){
+            if (local->right != NULL)
+            {
                 q.push(local->right);
             }
             result.push_back(level);
         }
     }
+}
+
+std::vector<int> preOrderTraversal(binaryTree *node)
+{
+    std::vector<int> result;
+
+    if (node == NULL)
+        return result;
+
+    std::queue<binaryTree *> q;
+    q.push(node);
+
+    while (!q.empty())
+    {
+        binaryTree *local = q.front();
+        q.pop();
+        result.push_back(local->data);
+        if (local->left)
+        {
+            q.push(local->left);
+        }
+        if (local->right)
+        {
+            q.push(local->right);
+        }
+    }
+}
+
+int returnHeight(binaryTree *node, int height)
+{
+    if (node == NULL)
+    {
+        return height;
+    }
+
+    int leftHeight, rightHeight = 0;
+    if (node->left)
+    {
+        height++;
+        leftHeight = returnHeight(node->left, height);
+    }
+    if (node->right)
+    {
+        height++;
+        rightHeight = returnHeight(node->right, height);
+    }
+
+    return std::max({leftHeight, rightHeight});
 }
 
 int main()
