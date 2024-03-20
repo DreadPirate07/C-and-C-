@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/solutions/128952/java-c-python-one-pass-o-n/?envType=list&envId=xlep8di5
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,34 +10,39 @@ int uniqueLetterString(string s)
     int count = 0;
 
     // creating sub-strings and pushing to vector
-    for (int i = 1; i < s.size(); i++)
+    for (int i = 0; i < s.size(); i++)
     {
-
-        for (int j = 0; j < s.size() - i; j++)
+        for (int j = i + 1; j <= s.size(); j++)
         {
-            if (i-j !=0)
+            if (1)
             {
-                string str = s.substr(,i);
+                string str = s.substr(i, j - i);
                 sub_str_arr.push_back(str);
             }
         }
     }
 
-    // debugging
-    for (auto &it : sub_str_arr)
-    {
-        std::cout << it << std::endl;
-    }
+    for (string str : sub_str_arr)
+        std::cout << str << " ";
+
+    // // debugging
+    // for (auto &it : sub_str_arr)
+    // {
+    //     std::cout << it << std::endl;
+    // }
 
     for (auto &it : sub_str_arr)
     {
         vector<int> al_arr(26, 0);
         int sub_str_size = it.size();
+        // std::cout << "Inside Array : " << it << " " << sub_str_size << std::endl;
+
         for (int i = 0; i < sub_str_size; i++)
         {
-            if (al_arr[it[i] - 'a'] == 0)
+            // std::cout << "Inside array" << (static_cast<int>(it[i] - 'A')) << std::endl;
+            if (al_arr[it[i] - 'A'] >= 0)
             {
-                al_arr[it[i] - 'a']++;
+                al_arr[it[i] - 'A']++;
             }
         }
         for (int i = 0; i < 26; i++)
@@ -50,7 +57,7 @@ int uniqueLetterString(string s)
 
 int main()
 {
-    string s = "ABC";
+    string s = "LEETCODE";
     int count = uniqueLetterString(s);
-    // std::cout << count << std::endl;
+    std::cout << count << std::endl;
 }
